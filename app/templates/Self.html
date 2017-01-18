@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+<style type="text/css">
+.contain{
+
+    padding-top: 60px;
+}
+</style>
+{% endblock %}
+
+{% block page_content %}
+<div class="contain" >
+    <div class="myphoto">
+    <img src="{{ url_for('static', filename='Image/myself.png') }}" height="250px" width="250px" >
+    </div>
+    <div class="intrduce">
+    <h3>姓名：<small>苏畅</small> </h3>
+    <h3>生日： <small>一九九七年七月三十一日</small></h3>
+    <h3>现今： <small>北京林业大学-计算机类</small></h3>
+    <h3>爱好：<small>写代码 机器学习</small></h3>
+    </div>
+
+</div>
+
+{% endblock %}

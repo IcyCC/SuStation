@@ -1,0 +1,39 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}SuStaion{% endblock %}
+
+
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">SuChang</a>
+        </div>
+                <div class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav">
+                    <li><a href="{{ url_for('main.Self_introduction') }}">自我介绍</a></li>
+                    <li><a href="">Web开发</a></li>
+                    <li><a href="">机器学习</a></li>
+                    <li><a href="">用Python娱乐</a></li>
+                    <li><a href="">知乎的收获</a></li>
+                    <li><a href="">随写</a></li>
+                  </ul>
+                </div>       
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% block page_content %}
+    <!-- 内容段 -->
+    {% endblock %}
+</div>
+{% endblock %}

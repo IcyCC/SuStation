@@ -1,6 +1,23 @@
-{% if name and name == 'suchang' %}
-<h1>Hello,{{name|upper}}</h1>
-{% else %}
-<h1>Hello,strange</h1>
-{% endif %}
-{# if 的用法#}
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+<style type="text/css">
+    .contain{
+        padding-top: 60px;
+    }
+</style>
+{% endblock %}
+
+{% block page_content %}
+<div class="contain" align="center">
+<h1>Welcome To My Station</h1>
+<img src="{{ url_for('static', filename='Image/myself.png') }}" height="250px" width="250px">
+<h2>There are something about coding</h2>
+<a href="https://github.com/IcyCC/SuStation"><img src="{{ url_for('static', filename='Ico/github.ico') }}" height="40px" width="40px">MyGitHub</a>
+&nbsp;&nbsp;&nbsp;
+<a href=""><img src="{{ url_for('static', filename='Ico/qq.ico') }}" height="40px" width="40px">:1103232282</a>
+&nbsp;&nbsp;&nbsp;
+<a href=""><img src="{{ url_for('static', filename='Ico/gmail.ico') }}" height="40px" width="40px">Samm23333@gmail.com</a>
+</div>
+
+{% endblock %}
