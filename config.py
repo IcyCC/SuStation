@@ -5,6 +5,7 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
     SQLALCHEMY_COMMIT_TEARDOWN = True
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
+    WTF_CSRF_SECRET_KEY = os.environ.get('WTF_CSRF_SECRET_KEY')
 
     @staticmethod
     def init_app(app):
