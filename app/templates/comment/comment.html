@@ -1,1 +1,20 @@
 {% extends "./base.html" %}
+
+
+
+{% block page_content %}
+<div class="List">
+<ul class="comments">
+    {% for comment in comments %}
+    <li class="comment">
+        <div class="name"><h3>{{ comment.name }} :</h3></div>
+        <div class="text"><p>{{ comment.ctext }}</p></div>
+    </li>
+    {% endfor %}
+</ul>
+</div>
+
+<div class="form">
+{{ wtf.quick_form(form) }}
+</div>
+{% endblock %}

@@ -6,10 +6,16 @@
 
     padding-top: 60px;
 }
+
+.List{
+    padding-left: 400px;
+    margin-top: -400px;
+}
 </style>
 {% endblock %}
 
 {% block page_content %}
+
 <div class="contain" >
     <div class="myphoto">
     <img src="{{ url_for('static', filename='Image/myself.png') }}" height="250px" width="250px" >
@@ -22,5 +28,18 @@
     </div>
 
 </div>
+
+<div class="List">
+<ul class="comments">
+    {% for comment in comments %}
+    <li class="comment">
+        <div class="name"><h3>{{ comment.name }} :<small>{{ comment.ctext }}</small></h3></div>
+    </li>
+    {% endfor %}
+</ul>
+{{ wtf.quick_form(form=form) }}
+</div>
+
+
 
 {% endblock %}

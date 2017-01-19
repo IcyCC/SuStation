@@ -1,14 +1,14 @@
-# # -*- coding:utf-8 -*-  
-# import sys
-# from app.defin import db
- 
-# class Comment(db.Model):
-#     __tablename__ = 'comments'
+# -*- coding:utf-8 -*-  
+from . import db
+from datetime import datetime
 
-#     id = db.Column(db.Integer,primary_key = True)
-#     name = db.Column(db.String(64))
-#     txet = db.Column(db.Text)
-#     timestamp = db.Column(db.DateTime)
+class Comment(db.Model):
+    __tablename__ = 'comments'
 
-#     def __repr__(self):
-#         return '<User %r>' % self.txet
+    id = db.Column(db.Integer,primary_key = True)
+    name = db.Column(db.String(64))
+    ctext = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime, index = True,default = datetime.utcnow)
+
+    def __repr__(self):
+        return '<User %r>' % self.ctext
