@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+{% block head %}
+{{ super() }}
+<style type="text/css">
+
+</style>
+{% endblock %}
+
+{% block page_content %}
+    <div class="tittle"><h1>{{ essay.tittle }} <small> {{ moment(essay.timestamp).format('LLL') }}</small></h1></div>
+    <div class="conText">{{ essay.body_html|safe }}</div>
+{% endblock %}
