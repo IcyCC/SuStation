@@ -6,7 +6,6 @@ class Config:
     SQLALCHEMY_COMMIT_TEARDOWN = True
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
     WTF_CSRF_SECRET_KEY = os.environ.get('WTF_CSRF_SECRET_KEY')
-    SQLALCHEMY_DATEBASE_URL = 'sqlite:///'+'/app'+'/my.db'
     @staticmethod
     def init_app(app):
         pass
