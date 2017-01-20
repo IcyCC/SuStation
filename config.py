@@ -15,7 +15,12 @@ class DevelopmentConfig(Config):
     SQLALCHEMY_DATABASE_URI =   \
         'sqlite:///' + os.path.join(basedir, 'data.sqlite')
         
+class RunConfig(Config):
+    DEBUG = False
+    SQLALCHEMY_DATABASE_URI =   \
+        'sqlite:///' + os.path.join(basedir, 'date-run.sqlite')
 
 config = {
-    'development':DevelopmentConfig
+    'development':DevelopmentConfig,
+    'run':RunConfig
 }

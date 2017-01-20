@@ -1,19 +1,28 @@
 from .. import db
 from datetime import datetime
 from flask import render_template,session,redirect,url_for
-from . import auth
-from .forms import CommentFrom
-from ..models import Comment
+from ..models import Essay,Kind
+from .forms import Compose,KindForm
+from . import write
 
-@auth.route('/Comment',methods = ['GET','POST'])
-def Comment_to():
-    form = CommentFrom()
+
+@write.route('/kind',methods = ['GET','POST'])
+def Write_addKind():
+    form = KindForm()
+
     if form.validate_on_submit() :
-        comment = Comment(name = form.Name.data,ctext = form.Text.data)
-        db.session.add(comment)
+        kind = Kind(name = form.name.data)
+        db.session.add(kind)
         db.session.commit()
-        return redirect(url_for('auth.Comment_to'))
-    comments = Comment.query.order_by(Comment.timestamp.desc()).all()    
+        return redirect(url_for('write.addKind'))
+    return render_template('write/kindadd.html',form = form)
 
-    return render_template("comment/comment.html",form = form,comments = comments)
-
+@write.route('/',methods = ['GET','POST'])
+def Write_compose():
+    form = Compose()
+    if form.validate_on_submit() :
+        essay = Essay(tittle = form.tittle.data,body = form.body.data,kind_id = form.kind.data )
+        db.session.add(essay)
+        db.session.commit()
+        return redirect(url_for('write.Write_compose'))
+    return render_template('write/write.html',form = form)

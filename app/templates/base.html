@@ -3,7 +3,10 @@
 
 {% block title %}SuStaion{% endblock %}
 
-
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{% endblock %}
 
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
@@ -20,11 +23,11 @@
                 <div class="navbar-collapse collapse">
                   <ul class="nav navbar-nav">
                     <li><a href="{{ url_for('main.Self_introduction') }}">自我介绍</a></li>
-                    <li><a href="">Web开发</a></li>
-                    <li><a href="">机器学习</a></li>
-                    <li><a href="">用Python娱乐</a></li>
-                    <li><a href="">知乎的收获</a></li>
-                    <li><a href="">随写</a></li>
+                    <li><a href="{{ url_for('main.In_Colum',colum = 1) }}">Web开发</a></li>
+                    <li><a href="{{ url_for('main.In_Colum',colum = 2) }}">机器学习</a></li>
+                    <li><a href="{{ url_for('main.In_Colum',colum = 3) }}">用Python娱乐</a></li>
+                    <li><a href="{{ url_for('main.In_Colum',colum = 4) }}">知乎的收获</a></li>
+                    <li><a href="{{ url_for('main.In_Colum',colum = 5) }}">随写</a></li>
                   </ul>
                 </div>       
     </div>

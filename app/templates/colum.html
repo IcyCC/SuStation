@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+{% block head %}
+{{ super() }}
+<style type="text/css">
+.List{
+
+}
+</style>
+{% endblock %}
+
+{% block page_content %}
+{% if essays %}
+    <div class="List">
+    {% for essay in essays %}
+        <h3><small><span class="glyphicon glyphicon-chevron-right"></span></small>><a href="{{ url_for('main.In_Essay',id = essay.id) }}">{{ essay.tittle }}</a></h3>
+    {% endfor %}
+    </div>
+{% else %}
+<h1>None</h1>
+{% endif %}
+
+{% endblock %}
