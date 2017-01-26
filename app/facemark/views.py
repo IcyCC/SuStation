@@ -7,14 +7,15 @@ import InDate
 
 @facemark.route('/mark',methods = ['GET','POST'])
 def facemarking():
-    #img_url = 'a'
-    img_url = InDate.getItem().next()['image_urls'][0]
+    id = InDate.getID()
+    img_url = InDate.getItem()[id]['image_urls'][0]
     form = MarkComment()
     if form.validate_on_submit():
-        if form.score.data is None:
+        InDate.setID(id+1)
+        if form.score.data == 0 :
             return redirect(url_for("facemark.facemarking"))
         else:
             score = form.score.data
-            InDate.outItem(img_url,score)
-        return redirect(url_for("facemark.facemarking"))
-    return  render_template("facemarking/index.html",img_url = img_url,form = form)
+            InDate.outItem(id=id, url=img_url, score=score)
+            return redirect(url_for("facemark.facemarking"))
+    return  render_template("facemarking/index.html", img_url=img_url, form=form, id=id)
