@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import division
+import json
 import pandas as pa
 import numpy as np
 from DateProcess import InDate
@@ -15,7 +16,13 @@ def CostFunction(X, y, theta):
     J = 1/(2*m)*np.sum(( np.dot(X,theta)- y )**2)
     return J
 
-def GradientDescent(X,y,theta,alpha,num_iters):
+def GradientDescent(X,y,alpha,num_iters):
+
+    l = Normalization(X,y)
+    X = l[0]
+    y = l[1]
+    m = X.shape[1]
+    theta = np.ones([m,1],dtype='float')
 
     J_history = np.zeros((num_iters, 1))
     for i in range(num_iters):
@@ -43,11 +50,6 @@ def Normalization(X, y):
         X[i, :] = (X[i, :]-meanX)/stdX
     y = (y - meanY)/stdY
 
-    return [X, y]
-
-
-
-d = Normalization(X=InDate.load_date(path='X.json'), y=InDate.load_date(path='Y.json'))
-print GradientDescent(X=d[0], y=d[1], theta=InDate.load_date(path='theta.json'), alpha=0.1, num_iters=100)
+    return [X, y,[meanX,stdX],[meanY,stdY]]
 
 
