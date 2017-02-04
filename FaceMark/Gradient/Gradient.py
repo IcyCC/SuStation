@@ -23,7 +23,8 @@ def GradientDescent(X,y,alpha,num_iters):
     y = l[1]
     m = X.shape[1]
     theta = np.ones([m,1],dtype='float')
-
+    print X
+    print y
     J_history = np.zeros((num_iters, 1))
     for i in range(num_iters):
         Z = np.transpose(X)
@@ -35,21 +36,21 @@ def GradientDescent(X,y,alpha,num_iters):
     plt.plot(J_history)
     plt.show()
     plt.figure()
-    plt.plot(X,y)
+    plt.plot(X,y,'blue')
     plt.plot(X,np.dot(X, theta),'red')
     plt.show()
     return theta
 
 def Normalization(X, y):
     meanX = np.mean(X, 0)
-    meanY = np.mean(y, 0)
-    stdX = np.std(X)
+    meanX[0]=0
+    meanY = np.mean(y)
+    stdX = np.std(X, 0)
+    stdX[0] = 1
     stdY = np.std(y)
-
     for i in range(X.shape[0]):
-        X[i, :] = (X[i, :]-meanX)/stdX
-    y = (y - meanY)/stdY
-
+        X[i,:] = (X[i,:] - meanX)/(stdX)
+    y = (y-meanY)/stdY
     return [X, y,[meanX,stdX],[meanY,stdY]]
 
 

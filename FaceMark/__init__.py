@@ -19,7 +19,7 @@ def mark(image_url,theta_file):
     X.shape = (1,X.shape[0])
     l = Gradient.Normalization(InDate.load_date('Date/X.json'),InDate.load_date('Date/Y.json'))
     X = (X-l[2][0])/l[2][1]
-    score = np.dot(X,theta)
+    score = np.dot(X,theta)*l[3][1]+l[3][0]
     return score
 
 
@@ -29,5 +29,5 @@ def save(path,theta):
 
 
 
-train(alpha=0.1,num_iters=1000,train_set='Date/Output.json',x_file='Date/X.json',y_file='Date/Y.json',theta_file='Date/theta.json')
+train(alpha=0.01,num_iters=10,train_set='Date/Output.json',x_file='Date/X.json',y_file='Date/Y.json',theta_file='Date/theta.json')
 print mark('http://oss.aofei.org/images/lyf.jpg','Date/theta.json')
