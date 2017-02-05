@@ -13,9 +13,7 @@ def train(alpha,num_iters,train_set,x_file,y_file,theta_file):
 def mark(image_url,theta_file):
     theta = InDate.load_date(theta_file)
     X= InDate.get_Xlist(image_url)
-    with open('Date/test.json','w')as f:
-        f.write(json.dumps(X))
-    X = InDate.load_date('Date/test.json')
+    X = np.array(InDate.load_date('Date/test.json'))
     X.shape = (1,X.shape[0])
     l = Gradient.Normalization(InDate.load_date('Date/X.json'),InDate.load_date('Date/Y.json'))
     X = (X-l[2][0])/l[2][1]
