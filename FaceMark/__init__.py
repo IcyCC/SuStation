@@ -26,6 +26,4 @@ def save(path,theta):
         f.write(json.dumps(theta.tolist()))
 
 
-
-train(alpha=0.01,num_iters=10,train_set='Date/Output.json',x_file='Date/X.json',y_file='Date/Y.json',theta_file='Date/theta.json')
-print mark('http://oss.aofei.org/images/lyf.jpg','Date/theta.json')
+print mark('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1489549067407&di=b8822dfa6849b5e32ae38ea01811519f&imgtype=0&src=http%3A%2F%2Fpic18.photophoto.cn%2F20110120%2F0036036748117379_b.jpg','Date/theta.json')
